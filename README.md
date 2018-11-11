@@ -1,6 +1,6 @@
 # Carthief
 
-[Video](https://youtu.be/JzevL2TxER0)
+[Video](https://www.youtube.com/watch?v=gJ1bY-7up_k)
 
 ## Requirements
 
