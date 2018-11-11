@@ -26,7 +26,7 @@ AddEventHandler('esx:setJob', function(job)
     ESX.PlayerData.job = job
 end)
 
-local debug = true
+local debug = false
 local blockinput = false
 local carThief = false
 local cirklar = { 
