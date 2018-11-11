@@ -11,6 +11,8 @@
  - [esx_policejob](https://github.com/ESX-Org/esx_policejob)
  
  - [es_extended](https://github.com/ESX-Org/es_extended)
+ 
+ - [InteractSound](https://github.com/plunkettscott/FiveM-Scripts/tree/master/InteractSound/client/html)
 
 ### Installation
  
@@ -26,4 +28,5 @@
  
  - Follow the installation guides for all the scripts under "Requirements"
  
- - Simple settings in config.lua
+
+ - For audio with InteractSound, edit config.lua
