@@ -4,7 +4,7 @@ Config.Locale = 'en'
 
 Config.MaxPayment = 75000
 Config.MinPayment = 50000
-Config.ChanceWeapon = 100 -- chance to get a weapon when mission succeeded, 0 = off 100 = always (not finished)
+Config.ChanceWeapon = 100 -- chance to get a weapon when mission succeeded, 0 = off 100 = always 
 
 Config.AudioFile = '' -- interactsound audiofile to play when in cutscene
 Config.AudioFileLength = 10 -- length for the audiofile (seconds)
