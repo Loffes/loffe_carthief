@@ -2,6 +2,7 @@ local PlayerData = {}
 ESX                           = nil
 
 local cinema = false
+local dropoff = 1
 
 Citizen.CreateThread(function()
 	while ESX == nil do
@@ -144,7 +145,9 @@ AddEventHandler('loffe_carthief:mission0', function()
 	carThief = true
 	Wait(5000)
 	DeleteEntity(SpawnObject)
-	Blip = AddBlipForCoord(53.63, -1877.22, 21.51)
+	dropoff = math.random(Config.amountOfDropoff)
+	print(dropoff)
+	Blip = AddBlipForCoord(Config.dropoffPoints[dropoff].sx, Config.dropoffPoints[dropoff].sy, Config.dropoffPoints[dropoff].sz)
 	SetBlipRoute(Blip, true)
 	SetBlipColour(Blip, 11)
 	SetBlipRouteColour(Blip, 11)
@@ -156,7 +159,7 @@ AddEventHandler('loffe_carthief:mission0', function()
         SetTextEntry_2("STRING")
         AddTextComponentString(_U('drive_text'))
 		DrawSubtitleTimed(500, 1)
-			if GetDistanceBetweenCoords(coords, 53.63, -1877.22, 21.51, true) < 50 then
+			if GetDistanceBetweenCoords(coords, Config.dropoffPoints[dropoff].sx, Config.dropoffPoints[dropoff].sy, Config.dropoffPoints[dropoff].sz, true) < 50 then
 				nearCar = 1
 			end
 		else
@@ -174,21 +177,21 @@ Citizen.CreateThread(function()
 		Citizen.Wait(0)
 		if carThief then
 			local coords = GetEntityCoords(GetPlayerPed(-1))
-			local vehicleModel = GetHashKey("kuruma")
+			local vehicleModel = GetHashKey(Config.dropoffPoints[dropoff].model)
 
 			RequestModel(vehicleModel)
 
 			while not HasModelLoaded(vehicleModel) do
 				Citizen.Wait(0)
 			end
-			if GetDistanceBetweenCoords(coords, 53.63, -1877.22, 21.51, true) < 50 then
-				local spawned_cars = CreateVehicle(vehicleModel, 53.63, -1877.22, 21.51, 137.47, true, false)
+			if GetDistanceBetweenCoords(coords, Config.dropoffPoints[dropoff].sx, Config.dropoffPoints[dropoff].sy, Config.dropoffPoints[dropoff].sz, true) < 50 then
+				local spawned_cars = CreateVehicle(vehicleModel, Config.dropoffPoints[dropoff].sx, Config.dropoffPoints[dropoff].sy, Config.dropoffPoints[dropoff].sz, Config.dropoffPoints[dropoff].sh, true, false)
 				SetVehicleOnGroundProperly(spawned_cars)
 				local hasTjuvkopplat = 0
 				repeat
 					Citizen.Wait(500)
 					if IsPedInVehicle(GetPlayerPed(-1), spawned_cars, false) then
-						TriggerServerEvent('esx_phone:send', 'police', (_U('police_message')), true, {x = 53.63, y = -1877.22, z = 137.47}, true)
+						TriggerServerEvent('esx_phone:send', 'police', (_U('police_message')), true, {x = Config.dropoffPoints[dropoff].sx, y = Config.dropoffPoints[dropoff].sy, z = Config.dropoffPoints[dropoff].sz}, true)
 						ClearPrints()
 						SetTextEntry_2("STRING")
 						AddTextComponentString(_U('hot_wire').. '.')
@@ -238,7 +241,7 @@ Citizen.CreateThread(function()
 				end
 				until(timesUntilSendareLoss == 0)
 				timesUntilSendareLoss = 240
-				Blip = AddBlipForCoord(-2192.39, 4265.86, 47.72)
+				Blip = AddBlipForCoord(Config.dropoffPoints[dropoff].x, Config.dropoffPoints[dropoff].y, Config.dropoffPoints[dropoff].z)
 				SetBlipRoute(Blip, true)
 				SetBlipColour(Blip, 11)
 				SetBlipRouteColour(Blip, 11)
@@ -248,10 +251,10 @@ Citizen.CreateThread(function()
 				Citizen.Wait(500)
 				local coords = GetEntityCoords(GetPlayerPed(-1))
 					if IsPedInVehicle(GetPlayerPed(-1), spawned_cars, false) then
-							if GetDistanceBetweenCoords(coords, -2192.39, 4265.86, 47.72, true) < 5 then
+							if GetDistanceBetweenCoords(coords, Config.dropoffPoints[dropoff].x, Config.dropoffPoints[dropoff].y, Config.dropoffPoints[dropoff].z, true) < 5 then
 								TaskEveryoneLeaveVehicle(spawned_cars)
 								TaskLeaveVehicle(GetPlayerPed(-1), spawned_cars, 0)
-								Wait(5000)
+								Wait(2000)
 								ClearPedTasksImmediately(GetPlayerPed(-1))
 								SetVehicleDoorsLocked(spawned_cars, 2)
 								RemoveBlip(Blip)

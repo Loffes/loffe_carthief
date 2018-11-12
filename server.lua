@@ -112,7 +112,19 @@ AddEventHandler('loffe_carthief:startMission', function(mission)
     }, function(timeleft)
 		if timeleft == 0 then
 			if mission == 0 then
-				TriggerClientEvent('loffe_carthief:mission0', _source)
+				local policeConnected = 0
+				local xPlayers = ESX.GetPlayers()
+				for i=1, #xPlayers, 1 do
+					local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
+					if xPlayer.job.name == 'police' then
+						policeConnected = policeConnected + 1
+					end
+				end
+				if policeConnected >= Config.CopsRequired then
+					TriggerClientEvent('loffe_carthief:mission0', _source)
+				else
+					sendNotification(_source, _U('no_cops'), 'error', 5500)
+				end
 			end
 		else
 			sendNotification(_source, _U('play_server') .. math.ceil(timeleft/120) .. _U('until_steal'), 'error', 5500)

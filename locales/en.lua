@@ -10,5 +10,6 @@ Locales['en'] = {
 	['mission_finished'] = 'Well done! You earned: ',
 	['play_server'] = 'You need to play on the server for ~',
 	['until_steal'] = ' hours until you can steal a vehicle again!',
+	['no_cops'] = 'There are not enough cops connected!',
 	
 }

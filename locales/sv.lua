@@ -10,5 +10,6 @@ Locales['sv'] = {
 	['mission_finished'] = 'Bra jobbat! Du fick: ',
 	['play_server'] = 'Du måste spela på servern ~',
 	['until_steal'] = ' timmar tills du kan stjäla en bil igen!',
+	['no_cops'] = 'Det finns inte tillräckligt med blåbär i skogen!',
 	
 }
