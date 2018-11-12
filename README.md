@@ -13,6 +13,8 @@
  - [es_extended](https://github.com/ESX-Org/es_extended)
  
  - [InteractSound](https://github.com/plunkettscott/FiveM-Scripts/tree/master/InteractSound/client/html)
+ 
+ - [Mysql Async](https://github.com/brouznouf/fivem-mysql-async)
 
 ### Installation
  
